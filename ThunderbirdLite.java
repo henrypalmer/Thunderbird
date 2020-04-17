@@ -43,12 +43,12 @@ class ContactTile extends JPanel {
 
         // Todo: Remove everything to do with random colors.
         // Todo: Implement visually appealing colors for aisles and seats.
-        SetRandomValues();
+        // SetRandomValues();
     }
 
     ContactTile(ThunderbirdContact contactInSeatIn) {
         super();
-        SetRandomValues();
+        // SetRandomValues();
         contactInSeat = contactInSeatIn;
     }
 
@@ -70,19 +70,19 @@ class ContactTile extends JPanel {
         int panelHeight = getHeight();
 
         if (isAnAisle) {
-            g.setColor(new Color(0,0,0));
+            g.setColor(new Color(192,192,192));
         } else {
-            g.setColor(new Color(red,green,blue));
+            g.setColor(new Color(255,255,255));
         }
         
         g.fillRect (10, 10, panelWidth-20, panelHeight-20);
 
-        g.setColor(new Color(GetContrastingColor(red),GetContrastingColor(green),GetContrastingColor(blue)));
+        g.setColor(new Color(0,0,0));
 
         final int fontSize=18;
         g.setFont(new Font("TimesRoman", Font.PLAIN, fontSize));
         int stringX = (panelWidth/2)-60;
-        int stringY = (panelHeight/2)+30;
+        int stringY = (panelHeight/2);
         if (contactInSeat != null) {
 
             // ToDo: Dispay preferred name instead of first and last name. 
@@ -120,10 +120,12 @@ class ThunderbirdLiteFrame extends JFrame implements ActionListener {
 
         ThunderbirdModel tbM = new ThunderbirdModel();
         tbM.LoadIndex();
-        tbM.LoadContacts();
+        tbM.LoadContactsThreaded();
 
         // Todo: Review ThunderbirdModel in detail and implement a multithreaded version of loading contacts. 
         // Hint: Review LoadContact() and LoadContactsThreaded() in detail.
+
+        /* HRP: done */
 
         System.out.println("Printing Model:");
         System.out.println(tbM);
@@ -153,7 +155,7 @@ class ThunderbirdLiteFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         for(ContactTile tile : tileList) {
             // Todo: Remove randomization functionality and implement a visually appealing view of seats and aisles.
-            tile.SetRandomValues();
+            // tile.SetRandomValues();
 
             // Todo: Implement reverse view where it looks like you are looking at the room from the back instead of the front 
             //     of the room. 

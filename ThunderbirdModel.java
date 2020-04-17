@@ -14,7 +14,7 @@ class ThunderbirdModel extends HttpRequest {
     // Todo: Add the URL of the index file for your class here.
     // Hint: Consider using "https://thunderbird-index.azurewebsites.net/w0a6zk195d.json"
 
-    private String indexURL = "[[YOUR-URL-HERE]]";
+    private String indexURL = "https://thunderbird-index.azurewebsites.net/w0a6zk195d.json";
     
     private ArrayList<ThunderbirdContact> contactList;
 
