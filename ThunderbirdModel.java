@@ -14,6 +14,8 @@ class ThunderbirdModel extends HttpRequest {
     // Todo: Add the URL of the index file for your class here.
     // Hint: Consider using "https://thunderbird-index.azurewebsites.net/w0a6zk195d.json"
 
+    // HRP: IMPLEMENTED
+
     private String indexURL = "https://thunderbird-index.azurewebsites.net/w0a6zk195d.json";
     
     private ArrayList<ThunderbirdContact> contactList;
@@ -24,6 +26,9 @@ class ThunderbirdModel extends HttpRequest {
 
     public Boolean LoadIndex() {
         Boolean returnValue = false;
+
+        int verify = 0;
+
         if (readURL(indexURL)) {
             // Look through the index JSON file for each URL and then create a new Contact object.
             for (String line : urlContent) {
@@ -33,15 +38,20 @@ class ThunderbirdModel extends HttpRequest {
                     if (subString[11].indexOf("https://") > -1) {
                         contactList.add(new ThunderbirdContact(subString[11]));
 
+                        verify++;
+
                         // Todo: We must have added at least one ThunderbirdContact to be successful. Verify 
                         //     that at least one was added and set the return value to false if no items were
                         //     added. 
+                        // HRP: IMPLEMENTED using the integer 'verify', set to 0 and then if we get a new contact, increment it. test the value at the end. 
                         returnValue = true;
                     }
                 }
             }            
         }
-        
+        if (verify == 0) {
+            returnValue = false;
+        }
         return returnValue; 
     }
 
