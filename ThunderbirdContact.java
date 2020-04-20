@@ -1,12 +1,3 @@
-/******************************************************************************
- * Copyright (C) 2019 Eric Pogue.
- * 
- * This file is licensed under the BSD-3-Clause
- * 
- * You may use any part of the file as long as you give credit in your 
- * source code.
- * 
- *****************************************************************************/
 
 class ThunderbirdContact extends HttpRequest implements Runnable {
     private String firstName;
